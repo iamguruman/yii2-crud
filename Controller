@@ -21,6 +21,9 @@
     {
         $model = $this->findModel($id);
 
+        $model->updated_by = aUserMyId();
+        $model->updated_at = aDateNow();
+        
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
