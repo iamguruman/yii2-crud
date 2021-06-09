@@ -38,7 +38,7 @@ if(aIfModuleControllerAction("onecdb", "user", "index")){
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            ['attribute' => 'id', 'format' => 'raw', 'value' => function($model) { return aGridVIewColumnId($model); }],
             //'created_at',
             //'created_by',
             //'updated_at',
@@ -51,6 +51,14 @@ if(aIfModuleControllerAction("onecdb", "user", "index")){
             'onec_username',
             //'onec_password',
 
+            [
+                'attribute' => 'jpNameSearch',
+                'format' => 'raw',
+                'value' => function(\app\modules\jps\models\MJpsVcard $model){
+                    return $model->jp->getUrlTo();
+                }
+            ],
+            
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}', 'buttons' => [
                 'view' => function($url, $model, $key){
                     return aGridViewActionColumnViewButton($model);
