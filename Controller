@@ -1,3 +1,45 @@
+<?php
+
+namespace app\modules\customer_review\controllers;
+
+use Yii;
+use app\modules\customer_review\models\MReview;
+use app\modules\customer_review\models\MReviewSearch;
+use yii\filters\AccessControl;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
+/**
+ * DefaultController implements the CRUD actions for MReview model.
+ */
+class DefaultController extends Controller
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ],
+            ],
+        ];
+    }
+   
+
      /**
      * Lists all  XXXX models.
      * @return mixed
@@ -61,3 +103,5 @@
 
         return $this->redirect(['index']);
     }
+
+}
