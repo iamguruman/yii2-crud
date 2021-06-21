@@ -1,3 +1,19 @@
+     /**
+     * Lists all  XXXX models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new MReviewSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->setSort(['defaultOrder' => ['id' => SORT_DESC]]);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
     public function actionCreate()
     {
         $model = new MOnecdb();
