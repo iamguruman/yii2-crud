@@ -61,7 +61,7 @@ if(aIfModuleControllerAction("onecdb", "user", "index")){
             
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}', 'buttons' => [
                 'view' => function($url, $model, $key){
-                    return aGridViewActionColumnViewButton($model);
+                    return aGridViewActionColumnViewButton($model, ['/customer_review/default/view', 'id' => $model->id]);
                 }
             ]],
         ],
