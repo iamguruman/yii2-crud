@@ -23,6 +23,7 @@
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
+                aReturnto();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
@@ -42,6 +43,7 @@
         
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
+                aReturnto();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
