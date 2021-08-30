@@ -40,11 +40,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
                     'id',
                     'created_at',
-                    'created_by',
+                    'createdBy.lastNameWithInitials',
                     'updated_at',
-                    'updated_by',
+                    'updatedBy.lastNameWithInitials',
                     'markdel_at',
-                    'markdel_by',
+                    'markdelBy.lastNameWithInitials',
                 ],
             ])
         ],
