@@ -7,7 +7,11 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\modules\onecdb\models\MOnecdbUserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-if(aIfModuleControllerAction("onecdb", "user", "index")){
+$module = "vacancy";
+$controller = "default";
+$action = "index";
+
+if(aIfModuleControllerAction($module, $controller, $action)){
     $this->title = 'M Onecdb Users';
     $this->params['breadcrumbs'][] = $this->title;
 }
@@ -15,12 +19,12 @@ if(aIfModuleControllerAction("onecdb", "user", "index")){
 ?>
 <div class="monecdb-user-index">
 
-    <?= aIfModuleControllerAction("onecdb", "user", "index") ?
+    <?= aIfModuleControllerAction($module, $controller, $action) ?
         aH1(Html::encode($this->title))
     : null  ?>
 
     <p>
-        <?= aIfModuleControllerAction("onecdb", "user", "index") ?
+        <?= aIfModuleControllerAction($module, $controller, $action) ?
             Html::a('Добавить', ['create'], ['class' => 'btn btn-success'])
         : null  ?>
 
