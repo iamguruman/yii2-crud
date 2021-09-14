@@ -25,8 +25,8 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 
     <p>
         <?= aIfModuleControllerAction($module, $controller, $action) ?
-            Html::a('Добавить', ['create'], ['class' => 'btn btn-success'])
-        : null  ?>
+            Html::a('Добавить', ["/{$module}/{$controller}/create"], ['class' => 'btn btn-success'])
+            : null  ?>  
 
         <?= aIfModuleControllerAction("onecdb", "db", "view") ?
             Html::a('Добавить', ['/onecdb/user/create', 'id' => aGet('id')], ['class' => 'btn btn-success'])
