@@ -69,6 +69,23 @@ class MVacancy extends \yii\db\ActiveRecord
     public function getUrlIndex(){
         return ['/vancancy/default/index'];
     }
+    
+    public function getUrlTo($target = null){
+        return Html::a("Вакансия {$this->name}",
+            $this->getUrlView(),
+            ['target' => '_blank', 'data-pjax' => 0]);
+    }
+
+    public function getUrlToBlank(){
+        return $this->getUrlTo('_blank');
+    }
+    
+    public function getBreadcrumbs(){
+        return [
+            'label' => "Вакансия {$this->name}",
+            'url' => $this->getUrlView()
+        ];
+    }
 
     /**
      * @return \yii\db\ActiveQuery
