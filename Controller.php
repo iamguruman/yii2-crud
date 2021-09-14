@@ -99,7 +99,7 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
 
-        return aControllerActionMarkdel($this, $model, $model->urlView, $model->urlIndex);
+        return aControllerActionMarkdel($this, $model, $model->getUrlView(), $model->getUrlIndex());
 
         return $this->redirect(['index']);
     }
