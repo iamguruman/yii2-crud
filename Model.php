@@ -61,6 +61,14 @@ class MVacancy extends \yii\db\ActiveRecord
             'name' => 'Наименование',
         ];
     }
+    
+    public function getUrlView(){
+        return ['/vancancy/default/view', 'id' => $this->id];
+    }
+
+    public function getUrlIndex(){
+        return ['/vancancy/default/index'];
+    }
 
     /**
      * @return \yii\db\ActiveQuery
