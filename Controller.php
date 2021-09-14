@@ -68,7 +68,7 @@ class DefaultController extends Controller
         $model =  $this->findModel($id);
         
         return $this->render('view', [
-            'model' => $model->id,
+            'model' => $model,
         ]);
     }
     
