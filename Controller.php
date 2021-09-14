@@ -56,6 +56,22 @@ class DefaultController extends Controller
         ]);
     }
     
+     /**
+     * Displays a single XX model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($id)
+    {
+
+        $model =  $this->findModel($id);
+        
+        return $this->render('view', [
+            'model' => $model->id,
+        ]);
+    }
+    
     public function actionCreate()
     {
         $model = new MOnecdb();
