@@ -73,7 +73,7 @@ class MVacancy extends \yii\db\ActiveRecord
     public function getUrlTo($target = null){
         return Html::a("Вакансия {$this->name}",
             $this->getUrlView(),
-            ['target' => '_blank', 'data-pjax' => 0]);
+            ['target' => $target, 'data-pjax' => 0]);
     }
 
     public function getUrlToBlank(){
