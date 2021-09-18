@@ -78,6 +78,8 @@ class DefaultController extends Controller
 
         $model->created_at = aDateNow();
         $model->created_by = aUserMyId();
+        
+        $model->team_by = aTeamDefaultId();
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
