@@ -99,7 +99,7 @@ if(aIfModuleControllerAction($module, $controller, $action)){
             
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}', 'buttons' => [
                 'view' => function($url, $model, $key){
-                    return aGridViewActionColumnViewButton($model, ['/customer_review/default/view', 'id' => $model->id]);
+                    return aGridViewActionColumnViewButton($model, $model->getUrlView());
                 }
             ]],
         ],
