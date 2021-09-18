@@ -53,8 +53,42 @@ if(aIfModuleControllerAction($module, $controller, $action)){
             'user.lastNameWithInititals',
             //'onec_link',
             'onec_username',
-            //'onec_password',
 
+            [
+                'attribute' => 'doneSearch',
+                'format' => 'raw',
+                'header' => "<img src='/mmodules/delviery/icon_done.png' height='25' title='Статус выполнено\НЕ выполнено'>",
+                'headerOptions' => ['style' => 'width:50px;'],
+                'value' => function(\app\modules\deliveries\models\Delivery $model){
+
+                    $ret = [];
+
+                    if($model->doneBy){
+                        $ret [] = Html::a(
+                            "<i class='fas fa-check-double' title='Правка выполнена, статус установил {$model->doneBy->lastnameWithInitials} {$model->done_at}'></i>",
+                            ['/deliveries/delivery/set-done', 'id' => $model->id, 'returnto' => $_SERVER['REQUEST_URI']],
+                            ['class' => 'btn btn-success',
+                                'data' => [
+                                    'confirm' => 'Установить статус НЕ выполнено?',
+                                    'method' => 'post',
+                                ]
+                            ]);
+                    } else {
+                        $ret [] = Html::a(
+                            "<i class='fas fa-times' title='Правка не выполнена'></i>",
+                            ['/deliveries/delivery/set-done', 'id' => $model->id, 'returnto' => $_SERVER['REQUEST_URI']],
+                            ['class' => 'btn btn-danger',
+                                'data' => [
+                                    'confirm' => 'Установить статус ВЫПОЛНЕНО?',
+                                    'method' => 'post',
+                                ]
+                            ]);
+                    }
+
+                    return implode($ret);
+                },
+            ],
+            
             [
                 'attribute' => 'jpNameSearch',
                 'format' => 'raw',
