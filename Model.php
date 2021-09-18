@@ -36,12 +36,16 @@ class MVacancy extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['team_by'], 'integer'],
+            [['team_by'], 'exist', 'skipOnError' => true, 'targetClass' => Team::className(), 'targetAttribute' => ['team_by' => 'id']],
+
             [['created_at', 'updated_at', 'markdel_at'], 'safe'],
             [['created_by', 'updated_by', 'markdel_by'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['created_by', 'updated_by', 'markdel_by'], 'integer'],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
             [['markdel_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['markdel_by' => 'id']],
+            
         ];
     }
 
@@ -52,12 +56,27 @@ class MVacancy extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+
+            'team_by' => 'Команда',
+            'team.name' => 'Команда',
+            'team.urlTo' => 'Команда',
+            'team.urlToBlank' => 'Команда',
+
             'created_at' => 'Добавлено когда',
+
             'created_by' => 'Добавлено кем',
+            'createdBy.lastNameWithInitials' => 'Удалено кем',
+
             'updated_at' => 'Изменено когда',
+
             'updated_by' => 'Изменено кем',
+            'updatedBy.lastNameWithInitials' => 'Удалено кем',
+
             'markdel_at' => 'Удалено когда',
+
             'markdel_by' => 'Удалено кем',
+            'markdelBy.lastNameWithInitials' => 'Удалено кем',
+            
             'name' => 'Наименование',
         ];
     }
