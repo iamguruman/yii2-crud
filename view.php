@@ -16,7 +16,29 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Удалить?', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= aHtmlButtonUpdate($model) ?>
+        
+        <?= $model->doneBy ?
+            Html::a(
+                "<i class='fas fa-check-double' title='Выполнено, статус установил {$model->doneBy->lastnameWithInitials} {$model->done_at}'></i>",
+                ['/tasks/correction/set-done', 'id' => $model->id, 'returnto' => $_SERVER['REQUEST_URI']],
+                ['class' => 'btn btn-success',
+                    'data' => [
+                        'confirm' => 'Установить статус НЕ выполнено?',
+                        'method' => 'post',
+                    ]
+                ])
+            :
+            Html::a(
+                "<i class='fas fa-times' title='Не выполнен'></i>",
+                ['/tasks/correction/set-done', 'id' => $model->id, 'returnto' => $_SERVER['REQUEST_URI']],
+                ['class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => 'Установить статус ВЫПОЛНЕНО?',
+                        'method' => 'post',
+                    ]
+                ])
+        ?>
     </p>
 
     <?= DetailView::widget([
