@@ -13,6 +13,13 @@ class MVacancyQuery extends \yii\db\ActiveQuery
     {
         return $this->andWhere('[[status]]=1');
     }*/
+    
+    public function init()
+    {
+        parent::init(); 
+        
+        $this->andWhere(['markdel_by' => null]);
+    }
 
     /**
      * {@inheritdoc}
