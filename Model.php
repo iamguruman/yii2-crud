@@ -8,17 +8,24 @@ use Yii;
  * This is the model class for table "m_vacancy".
  *
  * @property int $id
+ *
  * @property string $created_at Добавлено когда
+ *
  * @property int $created_by Добавлено кем
+ * @property User $createdBy
+ *
  * @property string $updated_at Изменено когда
+ * 
  * @property int $updated_by Изменено кем
+ * @property User $updatedBy
+ *
  * @property string $markdel_at Удалено когда
+ *
  * @property int $markdel_by Удалено кем
+ * @property User $markdelBy
+ * 
  * @property string $name Наименование
  *
- * @property User $createdBy
- * @property User $updatedBy
- * @property User $markdelBy
  */
 class MVacancy extends \yii\db\ActiveRecord
 {
