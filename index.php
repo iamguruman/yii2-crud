@@ -19,9 +19,7 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 ?>
 <div class="monecdb-user-index">
 
-    <?= aIfModuleControllerAction($module, $controller, $action) ?
-        aH1(Html::encode($this->title))
-    : null  ?>
+    <?= aHtmlHeader($this->title, $module, $controller, $action) ?>
 
     <p>
         <?= aIfModuleControllerAction($module, $controller, $action) ?
