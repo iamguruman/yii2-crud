@@ -95,9 +95,21 @@ if(aIfModuleControllerAction($module, $controller, $action)){
                 }
             ],
             
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view}', 'buttons' => [
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {files}', 'buttons' => [
                 'view' => function($url, $model, $key){
                     return aGridViewActionColumnViewButton($model, $model->getUrlView());
+                },
+                
+                'files' => function($url, \app\modules\route\models\MRoute $model, $key){
+
+                    $count = count($model->uploads);
+
+                    if($count > 0){
+                        return Html::a("<i class='fas fa-paperclip'>{$count}</i>",
+                            ['/route/route/view', 'id' => $model->id, 'tab' => 'files'],
+                            ['data-pjax' => 0]);
+                    }
+
                 }
             ]],
         ],
