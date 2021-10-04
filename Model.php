@@ -26,6 +26,8 @@ use Yii;
  * 
  * @property string $name Наименование
  *
+ * @property-read XXXXX[] $uploads - вложения, см метод getUploads
+ *
  */
 class MVacancy extends \yii\db\ActiveRecord
 {
@@ -110,6 +112,15 @@ class MVacancy extends \yii\db\ActiveRecord
             'label' => "Вакансия {$this->name}",
             'url' => $this->getUrlView()
         ];
+    }
+    
+     /**
+     * получаю список файлов относящися к объекту
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUploads()
+    {
+        return $this->hasMany(MRouteUpload::className(), ['object_id' => 'id']);
     }
 
     /**
