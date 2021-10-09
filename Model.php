@@ -89,10 +89,18 @@ class MVacancy extends \yii\db\ActiveRecord
         ];
     }
     
+     /**
+     * ссылка на просмотр объекта
+     * @return array
+     */
     public function getUrlView(){
         return ['/vancancy/default/view', 'id' => $this->id];
     }
 
+     /**
+     * ссылка к списку объектов
+     * @return array
+     */
     public function getUrlIndex(){
         return ['/vancancy/default/index'];
     }
@@ -101,6 +109,14 @@ class MVacancy extends \yii\db\ActiveRecord
         return Html::a("Вакансия {$this->name}",
             $this->getUrlView(),
             ['target' => $target, 'data-pjax' => 0]);
+    }
+    
+     /**
+     * получить заголовок объекта
+     * @return string
+     */
+    public function getTitle(){
+        return "{$this->number} от {$this->date}";
     }
 
     public function getUrlToBlank(){
