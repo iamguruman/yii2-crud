@@ -12,7 +12,7 @@ $controller = "default";
 $action = "index";
 
 if(aIfModuleControllerAction($module, $controller, $action)){
-    $this->title = 'M Onecdb Users';
+    $this->title = app\modules\supplierrequest\Module::moduleTitle;
     $this->params['breadcrumbs'][] = $this->title;
 }
 
