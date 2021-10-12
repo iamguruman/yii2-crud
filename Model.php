@@ -106,7 +106,7 @@ class MVacancy extends \yii\db\ActiveRecord
     }
     
     public function getUrlTo($target = null){
-        return Html::a("Вакансия {$this->name}",
+        return Html::a($this->getTitle(),
             $this->getUrlView(),
             ['target' => $target, 'data-pjax' => 0]);
     }
@@ -125,7 +125,7 @@ class MVacancy extends \yii\db\ActiveRecord
     
     public function getBreadcrumbs(){
         return [
-            'label' => "Вакансия {$this->name}",
+            'label' => $this->getTitle(),
             'url' => $this->getUrlView()
         ];
     }
