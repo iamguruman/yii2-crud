@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Связать Юрлицо и Визитку';
 
-$this->params['breadcrumbs'][] = ['label' => 'Список юридических лиц', 'url' => ['/jps']];
+$this->params['breadcrumbs'][] = $this->params['breadcrumbs'][] = app\modules\supplierrequest\Module::getBreadcrumbs();
 
 $this->params['breadcrumbs'][] = ['label' => 'Связь юрлиц и визиток', 'url' => ['/jps/vcard']];
 
