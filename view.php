@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\modules\customer_review\models\MReview */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Отзывы Покупателей', 'url' => ['index']];
+$this->params['breadcrumbs'][] = app\modules\supplierrequest\Module::getBreadcrumbs();
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
