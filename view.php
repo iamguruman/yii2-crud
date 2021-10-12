@@ -6,6 +6,9 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\customer_review\models\MReview */
 
+/* @var $uploadSearchModel \app\modules\supplierrequest\models\MSupplierrequestUploadSearch */
+/* @var $uploadDataProvider \yii\data\ActiveDataProvider */
+
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = app\modules\supplierrequest\Module::getBreadcrumbs();
 $this->params['breadcrumbs'][] = $this->title;
@@ -54,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
     
     <?= \yii\bootstrap\Tabs::widget(['items' => [
+            
         [
             'label' => 'ID',
             'active' => false,
@@ -70,6 +74,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ])
         ],
-    ]]) ?>
+            
+        [
+            'label' => "Файлы ({$uploadDataProvider->totalCount})",
+            'active' => aGet('tab') == 'files' ? true : null,
+            'content' => "<br>".$this->render("@app/modules/supplierrequest/views/upload/index.php", [
+                    'uploadSearchModel' => $uploadSearchModel,
+                    'uploadDataProvider' => $uploadDataProvider,
+                ]),
+        ],
+            
+            
+    ]) ?>
 
 </div>
