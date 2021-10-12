@@ -79,8 +79,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'label' => "Файлы ({$uploadDataProvider->totalCount})",
             'active' => aGet('tab') == 'files' ? true : null,
             'content' => "<br>".$this->render("@app/modules/supplierrequest/views/upload/index.php", [
-                    'uploadSearchModel' => $uploadSearchModel,
-                    'uploadDataProvider' => $uploadDataProvider,
+                    'searchModel' => $uploadSearchModel,
+                    'dataProvider' => $uploadDataProvider,
                 ]),
         ],
             
