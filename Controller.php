@@ -67,7 +67,17 @@ class DefaultController extends Controller
 
         $model =  $this->findModel($id);
         
-        return $this->render('view', [
+        $uploadSearchModel = new MSupplierrequestUploadSearch();
+        $uploadDataProvider = $uploadSearchModel->search(Yii::$app->request->queryParams, [
+            'object_id' => $model->id
+        ]);
+        $uploadDataProvider->setSort(['defaultOrder' => ['id' => SORT_DESC]]);
+
+        return $this->render('view', [ 
+            
+            'uploadSearchModel' => $uploadSearchModel,
+            'uploadDataProvider' => $uploadDataProvider,
+           
             'model' => $model,
         ]);
     }
