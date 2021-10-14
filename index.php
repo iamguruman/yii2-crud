@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\modules\onecdb\models\MOnecdbUserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$module = "vacancy";
+$module = app\modules\project\Module::moduleId;
 $controller = "default";
 $action = "index";
 
