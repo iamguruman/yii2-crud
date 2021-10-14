@@ -2,9 +2,6 @@
 
 namespace app\modules\jps\models;
 
-use ...
-
-
 
 class ModelSearch extends Model
 {
